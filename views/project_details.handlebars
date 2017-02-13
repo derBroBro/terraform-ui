@@ -1,0 +1,93 @@
+<h1>{{ctrl.params.id}}</h1>
+
+{{#unless data.setup_complete}}
+<div class="alert alert-danger" role="alert">
+  <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+  <span class="sr-only">Error:</span>
+  Projekt is not setup properbly!
+</div>
+{{/unless}}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Settings</h3>
+  </div>
+  <div class="panel-body">
+    <h2>Git</h2>
+    URL: <a href="#" class="editable" id="git.url" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Git URL">{{data.metadata.git.url}}</a><br>
+    Branch: <a href="#" class="editable" id="git.branch" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.branch}}</a><br>
+    User: <a href="#" class="editable" id="git.user" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.user}}</a><br>
+    Pass: <a href="#" class="editable" id="git.pass" data-send="always" data-inputclass="full_width"  data-type="password" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.pass}}</a><br>
+    <h2>General</h2>
+    Workspace: <a href="/project/{{ctrl.params.id}}/workspace">Link</a><br>
+    Latest: <a href="/project/{{ctrl.params.id}}/version/{{data.metadata.latest}}"/>Version {{data.metadata.latest}}</a><br>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Variables</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="keyValue">
+        {{#each data.metadata.variables}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+            <td><a class="btn btn-default delKey" href-del="/project/{{@root.ctrl.params.id}}?name=variables.{{@key}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td><input class="data-key form-control"></td>
+          <td><input class="data-val form-control"></td>
+          <td><a class="btn btn-default addKey" href-put="/project/{{ctrl.params.id}}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Versions</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>User</th>
+          <th>Date</th>
+          <th>Changes</th>
+          <th>Commit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data.versions}}
+          <tr>
+            <td><a href="/project/{{../ctrl.params.id}}/version/{{@key}}"/>Version {{@key}}</a></td>
+            <td>{{this.apply.exec_user}}</td>
+            <td>{{this.apply.datetime}}</td>
+            <td>
+              <span class="label label-pill label-success">+{{apply.state.add}}</span>
+              <span class="label label-pill label-primary">~{{apply.state.change}}</span>
+              <span class="label label-pill label-danger">-{{apply.state.destroy}}</span>
+            </td>
+            <td>
+              {{this.commit}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

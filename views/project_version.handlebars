@@ -1,0 +1,76 @@
+<h1>{{ctrl.id}}</h1>
+
+From Commit: {{data.commit}}<br>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Variables</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr> <th>Name</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        {{#each data.variables}}
+          <tr> <td>{{@key}}</td><td>{{this}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Plan</h3>
+  </div>
+  <div class="panel-body">
+    User: {{data.plan.user}}<br>
+    Date: {{data.plan.datetime}}<br>
+    <br>
+    Add: <span class="label label-pill label-success">+{{data.plan.state.add}}</span><br>
+    Change: <span class="label label-pill label-primary">~{{data.plan.state.change}}</span><br>
+    Destroy: <span class="label label-pill label-danger">-{{data.plan.state.destroy}}</span><br>
+
+    <pre>
+      {{data.plan.state.text}}
+    </pre>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Apply</h3>
+  </div>
+  <div class="panel-body">
+    User: {{data.apply.user}}<br>
+    Date: {{data.apply.datetime}}<br>
+    <br>
+    Add: <span class="label label-pill label-success">+{{data.apply.state.add}}</span><br>
+    Change: <span class="label label-pill label-primary">~{{data.apply.state.change}}</span><br>
+    Destroy: <span class="label label-pill label-danger">-{{data.apply.state.destroy}}</span><br>
+
+    <pre>
+      {{data.apply.state.text}}
+    </pre>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">State</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+    {{#each data.state.modules.0.resources}}
+      <a class="list-group-item">{{@key}}<span class="badge">{{this.type}}</span></a>
+      {{/each}}
+    </div>
+
+    Raw:
+    <pre>
+    {{{toJSON data.state}}}
+    </pre>
+  </div>
+</div>
+<a href="/project/{{ctrl.id}}">Back</a> to project

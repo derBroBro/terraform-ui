@@ -1,0 +1,63 @@
+<h1>{{ctrl.params.id}}</h1>
+
+From Commit: {{data.commit}}<br>
+<a class="btn btn-default post" href-post="/project/{{ctrl.params.id}}/workspace/update"  data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Pulling..." role="button">Pull from Git</a>
+<!--<a class="btn btn-warning post" href-post="/project/{{ctrl.params.id}}/workspace/clear" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Cleaning..." role="button">Clear Workspace</a><br><br>-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Variables</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr> <th>Name</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        {{#each data.variables}}
+          <tr> <td>{{@key}}</td><td>{{this}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <em><small>Changes must be done in the project.</small></em>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Status</h3>
+  </div>
+  <div class="panel-body">
+    <h4>STEP 1: Plan</h4>
+    Status:
+    <pre>{{data.plan.state.text}}</pre>
+    {{#unless data.plan.state.changes_needed}}
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Notice:</span>
+      All is up to date, no change needed <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    </div>
+    {{/unless}}
+    {{#if data.plan.valid}}
+     By: {{data.plan.exec_user}}<br>
+     On: {{data.plan.datetime}}<br>
+     Changes:
+     <span class="label label-pill label-success">+{{data.plan.state.add}}</span>
+     <span class="label label-pill label-primary">~{{data.plan.state.change}}</span>
+     <span class="label label-pill label-danger">-{{data.plan.state.destroy}}</span><br><br>
+
+     {{else}}
+     Action: <a class="btn btn-default post" href-post="/project/{{ctrl.params.id}}/workspace/plan" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Planning..." role="button">Run Plan</a>
+    {{/if}}
+    <h4>STEP 2: Apply</h4>
+
+    {{#if data.plan.valid}}
+    <a class="btn btn-default post" href-post="/project/{{ctrl.params.id}}/workspace/apply" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Applying..." role="button">Run Apply</a>
+    {{else}}
+    <div class="alert alert-info" role="alert">
+      <span class="sr-only">Notice:</span>
+      Run plan successfully first <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    </div>
+    {{/if}}
+  </div>
+</div>
+<a href="/project/{{ctrl.params.id}}">Back</a> to project

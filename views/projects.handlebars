@@ -1,0 +1,14 @@
+<h1>Terraform Projects
+  <div class="pull-right">
+    <form class="form-inline">
+      <input type="text" class="form-control" id="projectId" placeholder="project id">
+      <a class="btn btn-default post_val" href-post="/project" post-id="projectId" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Creating..." role="button">New</a>
+    </form>
+  </div>
+</h1>
+
+<div class="list-group">
+  {{#each data}}
+  <a href="/project/{{@key}}" class="list-group-item">{{metadata.description}}{{#unless setup_complete}} <i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{/unless}}<span class="badge">{{@key}}</span></a>
+  {{/each}}
+</div>
