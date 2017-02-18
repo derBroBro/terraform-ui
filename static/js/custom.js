@@ -3,7 +3,7 @@ $(document).ready(function() {
   $('.editable').editable();
 });
 
-$('a.delKey').click(function(){
+$('a.delButton').click(function(){
   var url = $(this).attr('href-del');
   $.ajax({
     url: url,
@@ -16,8 +16,8 @@ $('a.delKey').click(function(){
     }
   });
 });
-$('a.addKey').click(function(){
-  var url = $(this).attr('href-put');
+$('a.addButton').click(function(){
+  var url = $(this).attr('href-post');
   var data = {};
   data.name = 'variables.'+$(this.parentNode.parentNode).find('.data-key').val();
   data.value = $(this.parentNode.parentNode).find('.data-val').val();

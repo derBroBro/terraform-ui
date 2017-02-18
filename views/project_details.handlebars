@@ -14,10 +14,10 @@
   </div>
   <div class="panel-body">
     <h2>Git</h2>
-    URL: <a href="#" class="editable" id="git.url" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Git URL">{{data.metadata.git.url}}</a><br>
-    Branch: <a href="#" class="editable" id="git.branch" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.branch}}</a><br>
-    User: <a href="#" class="editable" id="git.user" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.user}}</a><br>
-    Pass: <a href="#" class="editable" id="git.pass" data-send="always" data-inputclass="full_width"  data-type="password" data-url="/project/{{ctrl.params.id}}" data-title="Enter Branch">{{data.metadata.git.pass}}</a><br>
+    URL: <a href="#" class="editable" id="git.url" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}/metadata" data-title="Enter Git URL">{{data.metadata.git.url}}</a><br>
+    Branch: <a href="#" class="editable" id="git.branch" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}/metadata" data-title="Enter Branch">{{data.metadata.git.branch}}</a><br>
+    User: <a href="#" class="editable" id="git.user" data-send="always" data-inputclass="full_width"  data-type="text" data-url="/project/{{ctrl.params.id}}/metadata" data-title="Enter Branch">{{data.metadata.git.user}}</a><br>
+    Pass: <a href="#" class="editable" id="git.pass" data-send="always" data-inputclass="full_width"  data-type="password" data-url="/project/{{ctrl.params.id}}/metadata" data-title="Enter Branch">{{data.metadata.git.pass}}</a><br>
     <h2>General</h2>
     Workspace: <a href="/project/{{ctrl.params.id}}/workspace">Link</a><br>
     Latest: <a href="/project/{{ctrl.params.id}}/version/{{data.metadata.latest}}"/>Version {{data.metadata.latest}}</a><br>
@@ -42,13 +42,13 @@
           <tr>
             <td>{{@key}}</td>
             <td>{{this}}</td>
-            <td><a class="btn btn-default delKey" href-del="/project/{{@root.ctrl.params.id}}?name=variables.{{@key}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-default delButton" href-del="/project/{{@root.ctrl.params.id}}/metadata?name=variables.{{@key}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
           </tr>
         {{/each}}
         <tr>
           <td><input class="data-key form-control"></td>
           <td><input class="data-val form-control"></td>
-          <td><a class="btn btn-default addKey" href-put="/project/{{ctrl.params.id}}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></td>
+          <td><a class="btn btn-default addButton" href-post="/project/{{ctrl.params.id}}/metadata"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></td>
         </tr>
       </tbody>
     </table>
@@ -89,5 +89,6 @@
         {{/each}}
       </tbody>
     </table>
+    <a class="btn btn-danger delButton" href-del="/project/{{ctrl.params.id}}" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Deleting..." role="button">Delete Project</a><br><br>
   </div>
 </div>

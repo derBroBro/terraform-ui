@@ -38,7 +38,7 @@ var mod_exports = {
         });
       });
     });
-    app.post('/project/:id', passport.authenticate('basic', {
+    app.post('/project/:id/metadata', passport.authenticate('basic', {
       session: false
     }), function(req, res) {
       projects.update_prop(req.params.id,req.body.name,req.body.value).then(function(data) {
@@ -48,6 +48,13 @@ var mod_exports = {
       });
     });
     app.delete('/project/:id', passport.authenticate('basic', {
+      session: false
+    }), function(req, res) {
+      projects.delete(req.params.id).then(function() {
+        res.json({status:'OK'});
+      });
+    });
+    app.delete('/project/:id/metadata', passport.authenticate('basic', {
       session: false
     }), function(req, res) {
       projects.delete_prop(req.params.id,req.query.name).then(function(data) {
