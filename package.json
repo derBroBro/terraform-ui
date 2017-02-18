@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node .\\node_modules\\mocha\\bin\\mocha"
   },
   "author": "",
   "license": "ISC",
@@ -12,14 +13,17 @@
     "aws-sdk": "^2.9.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
-    "chai": "^3.5.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "fs-extra": "^2.0.0",
-    "mocha": "^3.2.0",
     "nodegit": "^0.17.0",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.2.0"
   }
 }
