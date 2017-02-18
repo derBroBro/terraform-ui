@@ -30,8 +30,8 @@ From Commit: {{data.commit}}<br>
   <div class="panel-body">
     <h4>STEP 1: Plan</h4>
     Status:
-    <pre>{{data.plan.state.text}}</pre>
-    {{#unless data.plan.state.changes_needed}}
+    <pre>{{data.plan.text}}</pre>
+    {{#unless data.plan.changes_needed}}
     <div class="alert alert-success" role="alert">
       <span class="sr-only">Notice:</span>
       All is up to date, no change needed <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -41,9 +41,9 @@ From Commit: {{data.commit}}<br>
      By: {{data.plan.exec_user}}<br>
      On: {{data.plan.datetime}}<br>
      Changes:
-     <span class="label label-pill label-success">+{{data.plan.state.add}}</span>
-     <span class="label label-pill label-primary">~{{data.plan.state.change}}</span>
-     <span class="label label-pill label-danger">-{{data.plan.state.destroy}}</span><br><br>
+     <span class="label label-pill label-success">+{{data.plan.add}}</span>
+     <span class="label label-pill label-primary">~{{data.plan.change}}</span>
+     <span class="label label-pill label-danger">-{{data.plan.destroy}}</span><br><br>
 
      {{else}}
      Action: <a class="btn btn-default post" href-post="/project/{{ctrl.params.id}}/workspace/plan" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Planning..." role="button">Run Plan</a>
