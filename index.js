@@ -2,12 +2,16 @@ var express = require('express');
 var passport = require('passport');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var auth = require('./lib/auth/basic_local.js');
-var logger = require('./lib/helper/logger.js');
+
+var path = require('path');
+var app_dir = path.dirname(require.main.filename);
+
+var auth = require(app_dir+'/lib/auth/basic_local.js');
+var logger = require(app_dir+'/lib/helper/logger.js');
+var routes = require(app_dir+'/routes.js');
 var config = require('./config.json');
-var routes = require('./routes.js');
 
-
+logger.setup(config.system.log_level);
 var app = express();
 
 // Handlebars

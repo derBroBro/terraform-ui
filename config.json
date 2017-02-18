@@ -1,5 +1,6 @@
 {
   "system":{
+    "log_level":"debug",
     "port":3000,
     "users":[
         {
