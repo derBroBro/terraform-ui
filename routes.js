@@ -8,11 +8,7 @@ var mod_exports = {
     app.get('/', passport.authenticate('basic', {
       session: false
     }), function(req, res) {
-      h_express.render(req,res,{
-        title: 'Welcome',
-        template: 'home',
-        data: {}
-      });
+      res.redirect('/project/');
     });
     app.get('/project/', passport.authenticate('basic', {
       session: false
