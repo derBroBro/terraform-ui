@@ -1,11 +1,15 @@
 # About
-Terraform UI is weekend project to provide a simple UI for the great terraform binary. Sadly this is special for new users a limit. Also the state sharing is a problem which should be addressed by this tool.
+Terraform UI is a weekend project to provide a simple UI for the great [terraform](terraform.io) binary. Sadly this is, specially for new users, limited because not everyone is able and want to use the current (CLI) version. Also the state sharing comes to a problem in larger teams, which should be addressed by this tool.
+
+> The project is currently just a PoC to gather ideas and testing arround how to make terraform accessable for people which are not experienced with Infra as Code yet.
+
+You can find the first documentation [here](/DOCUMENTATION.md).
 
 ## Features
-- Allows to exec terraform via web UI
+- Allows to execute terraform via web UI
 - Support for multiple git backed projects
-- Variables are stored on the webserver (try to hide secret data)
-- History of executions is stored incl. State and changes
+- Variables are stored on the webserver (tries to hide secret data)
+- History of executions is stored including the states and changes
 - (Tries to) follow the [ROCA Style](http://roca-style.org/)
 
 ## Images
@@ -18,18 +22,13 @@ Terraform UI is weekend project to provide a simple UI for the great terraform b
 ### Project version details
 ![Project version](github_images/version.png)
 
-
-# Installation
-- Clone the git repo
-- Download the latest terraform binary and store it under bin/terraform (currently only windows tested!)
-- start the app with ```node index.js```
-- Go to ```http://localhost:3000```
-
 # ToDo
-- [ ] Clear code to have it more logical
-- [ ] Add some unit tests (mocha & chai)
+- [ ] Clear the code to make it more structured
+- [ ] Add much more tests
+- [ ] Use the user within the version history (logging)
 
 # Ideas
-- Allow workspace to be located on aws-s3
 - Add additional authentication providers
 - Add permission system
+- Allow "filesystem" to be located on aws-s3
+- Extend the filesystem to be cached (speed)
