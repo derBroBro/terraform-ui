@@ -5,6 +5,7 @@
 # Installation
 - Clone the git repo
 - Download the latest terraform binary and store it in the ```bin/``` directory (currently only windows is tested!)
+- Run ```npm install```
 - Start the app with ```node index.js```
 - Go to ```http://localhost:3000```
 - Default login is admin / terraformui
