@@ -1,3 +1,7 @@
+This project is quite old and not developed further. 
+Based on my learnings an experience of the last years, I started a new projects which offers a simialar solution. 
+If you are intrested about a terraform UI, check out the [HTTP-Backend for Terraform](https://github.com/derBroBro/terraform-http-backend) as well :).
+
 # About
 Terraform UI is a weekend project to provide a simple UI for the great [terraform](terraform.io) binary. Sadly this is, specially for new users, limited because not everyone is able and want to use the current (CLI) version. Also the state sharing comes to a problem in larger teams, which should be addressed by this tool.
 
